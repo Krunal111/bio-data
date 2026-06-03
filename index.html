@@ -7,7 +7,7 @@
 
   <!-- OG tags for WhatsApp / social link preview -->
   <meta property="og:title" content="Krunalkumar Rathod – Bio Data" />
-  <meta property="og:description" content="S/W Engineer · DOB 09/10/1993 · 5.2 ft · Mithun · Nakshatra Complex, Maroli" />
+  <meta property="og:description" content="Senior Engineer · DOB 09/10/1993 · 5.2 ft · Mithun · Nakshatra Complex, Maroli" />
   <meta property="og:image" content="https://bio-data-green.vercel.app/photo/og-image.jpg" />
   <meta property="og:image:width" content="600" />
   <meta property="og:image:height" content="600" />
@@ -124,6 +124,15 @@
       cursor: pointer;
       line-height: 1;
       user-select: none;
+      z-index: 1001;
+      background: rgba(0,0,0,0.5);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
     }
 
     /* Details table */
@@ -263,12 +272,14 @@
 
   </div>
   <!-- Lightbox overlay -->
-  <div id="lightbox" onclick="closeLightbox()">
+  <div id="lightbox">
     <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
     <img id="lightbox-img" src="" alt="Photo" />
   </div>
 
   <script>
+    var isPinching = false;
+
     function openLightbox(src) {
       document.getElementById('lightbox-img').src = src;
       document.getElementById('lightbox').classList.add('open');
@@ -283,6 +294,19 @@
       });
       thumb.classList.add('active');
     }
+
+    var lightbox = document.getElementById('lightbox');
+    lightbox.addEventListener('touchstart', function(e) {
+      isPinching = e.touches.length > 1;
+    });
+    lightbox.addEventListener('touchmove', function(e) {
+      if (e.touches.length > 1) isPinching = true;
+    });
+    lightbox.addEventListener('click', function(e) {
+      if (isPinching) { isPinching = false; return; }
+      if (e.target === lightbox) closeLightbox();
+    });
+
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeLightbox();
     });
