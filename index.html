@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Krunalkumar Rathod – Bio Data</title>
+  <title>Krunal Rathod - Bio Data</title>
 
   <!-- OG tags for WhatsApp / social link preview -->
   <meta property="og:title" content="Krunal Rathod - Bio Data" />
   <meta property="og:description" content="Senior Engineer · DOB 09/10/1993 · 5.2 ft · Mithun · Nakshatra Complex, Maroli" />
-  <meta property="og:image" content="https://bio-data-green.vercel.app/photo/og-image.jpg" />
-  <meta property="og:image:width" content="600" />
-  <meta property="og:image:height" content="600" />
+  <meta property="og:image" content="https://bio-data-green.vercel.app/photo.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://bio-data-green.vercel.app/" />
   <meta property="og:type" content="profile" />
 
@@ -60,79 +60,16 @@
 
     /* Photo */
     .photo-wrap {
-      display: flex;
-      justify-content: center;
       margin-bottom: 16px;
+      border-radius: 10px;
+      overflow: hidden;
     }
-    .photo-wrap img.main-photo {
-      width: 160px;
-      height: 200px;
+    .photo-wrap img {
+      width: 100%;
+      height: 220px;
       object-fit: cover;
-      object-position: center 15%;
-      border-radius: 12px;
-      border: 3px solid #e8b4b8;
-      cursor: pointer;
-      object-position: center;
+      object-position: center 20%;
       display: block;
-    }
-
-    /* Photo gallery row */
-    .photo-gallery {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .photo-gallery img {
-      width: 80px;
-      height: 90px;
-      object-fit: cover;
-      object-position: center 15%;
-      border-radius: 8px;
-      border: 2px solid #e8b4b8;
-      cursor: pointer;
-    }
-    .photo-gallery img.active {
-      border-color: #c06070;
-    }
-
-    /* Lightbox */
-    #lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 999;
-      justify-content: center;
-      align-items: center;
-    }
-    #lightbox.open {
-      display: flex;
-    }
-    #lightbox img {
-      max-width: 95vw;
-      max-height: 95vh;
-      border-radius: 8px;
-      object-fit: contain;
-    }
-    #lightbox-close {
-      position: fixed;
-      top: 16px;
-      right: 20px;
-      color: #fff;
-      font-size: 36px;
-      cursor: pointer;
-      line-height: 1;
-      user-select: none;
-      z-index: 1001;
-      background: rgba(0,0,0,0.5);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
     }
 
     /* Details table */
@@ -174,31 +111,18 @@
       border-top: 1px solid #e8b4b8;
       margin: 14px 0;
     }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      font-size: 12px;
-      color: #b08040;
-      margin-top: 14px;
-    }
   </style>
 </head>
 <body>
   <div class="card">
 
     <div class="header">
-      <h1>Krunalkumar Rathod</h1>
+      <h1>Krunal Rathod</h1>
       <div class="subtitle">Bio Data for Marriage</div>
     </div>
 
     <div class="photo-wrap">
-      <img src="photo/photo1.jpg" alt="Krunalkumar Rathod" class="main-photo" onclick="openLightbox(this.src)" />
-    </div>
-
-    <div class="photo-gallery">
-      <img src="photo/photo1.jpg" alt="Photo 1" class="active" onclick="setMain(this)" />
-      <img src="photo/photo2.jpg" alt="Photo 2" onclick="setMain(this)" />
+      <img src="photo.jpg" alt="Krunal Rathod" />
     </div>
 
     <hr class="divider" />
@@ -265,51 +189,6 @@
         <td class="value">Nakshatra Complex, Maroli</td>
       </tr>
     </table>
-
-    <div class="footer">
-      ॥ शुभ विवाह ॥
-    </div>
-
   </div>
-  <!-- Lightbox overlay -->
-  <div id="lightbox">
-    <span id="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <img id="lightbox-img" src="" alt="Photo" />
-  </div>
-
-  <script>
-    var isPinching = false;
-
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox').classList.add('open');
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-    }
-    function setMain(thumb) {
-      document.querySelector('.main-photo').src = thumb.src;
-      document.querySelectorAll('.photo-gallery img').forEach(function(el) {
-        el.classList.remove('active');
-      });
-      thumb.classList.add('active');
-    }
-
-    var lightbox = document.getElementById('lightbox');
-    lightbox.addEventListener('touchstart', function(e) {
-      isPinching = e.touches.length > 1;
-    });
-    lightbox.addEventListener('touchmove', function(e) {
-      if (e.touches.length > 1) isPinching = true;
-    });
-    lightbox.addEventListener('click', function(e) {
-      if (isPinching) { isPinching = false; return; }
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
 </body>
 </html>
